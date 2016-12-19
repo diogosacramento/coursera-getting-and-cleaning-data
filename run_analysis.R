@@ -6,6 +6,8 @@ library(reshape2)
 filename <- "getdata_dataset.zip"
 
 ## Download and unzip the dataset:
+### fazer download mais simples.
+
 if (!file.exists(filename)){
         fileURL <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip "
         download.file(fileURL, filename, method="curl")
@@ -15,9 +17,9 @@ if (!file.exists("UCI HAR Dataset")) {
 }
 
 # Load activity labels + features
-activityLabels <- read.table("UCI HAR Dataset/activity_labels.txt")
+activityLabels <- read.table(temp, "UCI HAR Dataset/activity_labels.txt")
 activityLabels[,2] <- as.character(activityLabels[,2])
-features <- read.table("UCI HAR Dataset/features.txt")
+features <- read.table(temp, "UCI HAR Dataset/features.txt")
 features[,2] <- as.character(features[,2])
 
 # Extract only the data on mean and standard deviation
@@ -29,14 +31,14 @@ featuresWanted.names <- gsub('[-()]', '', featuresWanted.names)
 
 
 # Load the datasets
-train <- read.table("UCI HAR Dataset/train/X_train.txt")[featuresWanted]
-trainActivities <- read.table("UCI HAR Dataset/train/Y_train.txt")
-trainSubjects <- read.table("UCI HAR Dataset/train/subject_train.txt")
+train <- read.table(temp, "UCI HAR Dataset/train/X_train.txt")[featuresWanted]
+trainActivities <- read.table(temp, "UCI HAR Dataset/train/Y_train.txt")
+trainSubjects <- read.table(temp, "UCI HAR Dataset/train/subject_train.txt")
 train <- cbind(trainSubjects, trainActivities, train)
 
-test <- read.table("UCI HAR Dataset/test/X_test.txt")[featuresWanted]
-testActivities <- read.table("UCI HAR Dataset/test/Y_test.txt")
-testSubjects <- read.table("UCI HAR Dataset/test/subject_test.txt")
+test <- read.table(temp, "UCI HAR Dataset/test/X_test.txt")[featuresWanted]
+testActivities <- read.table(temp, "UCI HAR Dataset/test/Y_test.txt")
+testSubjects <- read.table(temp, "UCI HAR Dataset/test/subject_test.txt")
 test <- cbind(testSubjects, testActivities, test)
 
 # merge datasets and add labels
