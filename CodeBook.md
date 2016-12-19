@@ -1,4 +1,4 @@
-# About R script
+## About R script
 File with R code "run_analysis.R" perform 5 following steps (in accordance assigned task of course work):   
 1. Merging the training and the test sets to create one data set.   
   1.1 Reading files    
@@ -18,9 +18,7 @@ File with R code "run_analysis.R" perform 5 following steps (in accordance assig
   5.1 Making second tidy data set   
   5.2 Writing second tidy data set in txt file   
 
-PS..The code takes for granted all the data is present in the same folder, un-compressed and without names altered.
-
-# About variables:   
+## About variables:   
 * `x_train`, `y_train`, `x_test`, `y_test`, `subject_train` and `subject_test` contain the data from the downloaded files.
 * `x_data`, `y_data` and `subject_data` merge the previous datasets to further analysis.
 * `features` contains the correct names for the `x_data` dataset, which are applied to the column names stored in
